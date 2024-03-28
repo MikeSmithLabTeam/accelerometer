@@ -1,4 +1,10 @@
-# Getting setup with the RP2040-LCD-1.28 accelerometer code
+## Using and uploading the accelerometer
+
+If you just want to load the code onto a new accelerometer then press and hold the boot button on the back and plug it in to computer via usb.
+This will mount as an external drive in file explorer. Find the main.uf2 file which is in the top level of the accelerometer repo. Drag and drop this
+onto the device. It will reboot and you are good to go.
+
+## Getting setup and building the RP2040-LCD-1.28 accelerometer code from source
 
 You're going to need to set up a bunch of the toolchain. Things like the pico-sdk, cmake, gcc compiler etc. Sadly I didn't document this when I did it. I've added the pdf:
 "How to setup the Raspberry PiPico C_C++..." which I used. I seem to remember there were some steps that needed more googling. If you repeat the setup please come back here and write it up! This should enable you to get all the build tools setup.
@@ -20,6 +26,9 @@ Plug the RP2040... into the computer with a cable but hold the boot button on th
 
 Drag and drop the uf2 file onto the device and it should automatically reboot and start running the code.
 
+## Modifying the code
+
+The CMakeLists.txt has a list of subdirectories to add. Inside the RP2040-LCD-1.28 folder is a ReadmeEN which has some instructions. You can tweak things like the accelerometer range, access gyros and magnetometers. I'd look at the original example main.c code in RP2040-LCD-1.28. I'd then cut together what you want with the main.c code in RP2040-LCD-1.28.
 
 
 
