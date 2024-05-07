@@ -7,7 +7,7 @@ onto the device. It will reboot and you are good to go.
 ## Getting setup and building the RP2040-LCD-1.28 accelerometer code from source
 
 You're going to need to set up a bunch of the toolchain. Things like the pico-sdk, cmake, gcc compiler etc. Sadly I didn't document this when I did it. I've added the pdf:
-"How to setup the Raspberry PiPico C_C++..." which I used. I seem to remember there were some steps that needed more googling. If you repeat the setup please come back here and write it up! This should enable you to get all the build tools setup.
+"How to setup the Raspberry PiPico C_C++..." which I used. I didn't follow the advice to install python3 globally. Instead create a conda environment "conda create -n accelerometer python=3.10"
 
 The picosdk when installed comes with a bunch of examples called pico-examples. I would just copy the relevant files from here into that directory. I have written all my code for the accelerometer inside RP2040-LCD-1.28. I have also modified the top level CMakeLists.txt so that it only builds the bits we're interested in and not the millions of other examples. 
 
@@ -16,9 +16,10 @@ I think easiest way to build everything is to delete any existing build director
 In Pico-examples:
 1. mkdir build
 2. cd build
-3. cmake -G "MinGW Makefiles" ..
-4. cd RP2040-LCD-1.28
-5. make
+3. conda activate accelerometer
+4. cmake -G "MinGW Makefiles" ..
+5. cd RP2040-LCD-1.28
+6. make
 
 These steps will produce a main.uf2 in build > RP2040-LCD-1.28
 
