@@ -16,8 +16,8 @@ I think easiest way to build everything is to delete any existing build director
 **Use git bash as your terminal**
 Add the alias for make by typing the following:
 
-echo "alias make=mingw32-make.exe" >> ~/.bashr
-source ~/.bashrc
+  echo "alias make=mingw32-make.exe" >> ~/.bashrc
+  source ~/.bashrc
 
 In Pico-examples:
 1. mkdir build
