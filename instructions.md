@@ -13,12 +13,9 @@ The picosdk when installed comes with a bunch of examples called pico-examples. 
 
 I think easiest way to build everything is to delete any existing build directory and recreate it. Vscode seems to hang onto some filehandle which means you often need to start Vscode to delete the build directory.
 
-**Use git bash as your terminal**
-Add the alias for make by typing the following:
+**Make sure you run the command in cmd which is partially obscured in the pdf**
 
-  echo "alias make=mingw32-make.exe" >> ~/.bashrc
-  
-  source ~/.bashrc
+echo mingw32-make %* > C:\VSARM\mingw\mingw32\bin\make.bat
 
 In Pico-examples:
 1. mkdir build
