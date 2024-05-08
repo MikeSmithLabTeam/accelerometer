@@ -4,6 +4,8 @@ If you just want to load the code onto a new accelerometer then press and hold t
 This will mount as an external drive in file explorer. Find the main.uf2 file which is in the top level of the accelerometer repo. Drag and drop this
 onto the device. It will reboot and you are good to go.
 
+The calibrations for each accelerometer are hardcoded into the code so its important not to muddle them up. The holders have a number. The uf2 files are in a folder with the accelerometer numbers.
+
 ## Getting setup and building the RP2040-LCD-1.28 accelerometer code from source
 
 You're going to need to set up a bunch of the toolchain. Things like the pico-sdk, cmake, gcc compiler etc. Sadly I didn't document this when I did it. I've added the pdf:
