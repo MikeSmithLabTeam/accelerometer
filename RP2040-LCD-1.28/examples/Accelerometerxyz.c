@@ -48,10 +48,20 @@ int accelerometerxyz(void)
 	place on front and back. half the difference is the offset_z. Place x and y vertical. flip over and put half the difference in the offsets.
 	Then set one_g to the value shown on z when it is lying flat on its back.	
 	*/
+
+	//Use these calibration values for accelerometer 1
+	/*
 	float one_g = 9.658;//This is the number V for 1g using 8g range and 8000Hz. Checked using z axis.
 	float offset_x = 0.5*(9.990-9.634);
 	float offset_y = 0.5*(10.796-9.011);
 	float offset_z = 0.5*(10.013 - 9.303);
+	*/
+	//Use these calibration values for accelerometer 2
+	float one_g = 9.658;//This is the number V for 1g using 8g range and 8000Hz. Checked using z axis.
+	float offset_x = 0.5*(9.990-9.634) + 0.13*one_g;
+	float offset_y = 0.5*(10.796-9.011) + 0.10*one_g;
+	float offset_z = 0.5*(10.013 - 9.303);
+
 
 
     printf("Accelerometer booting\r\n");
