@@ -24,7 +24,7 @@ In Pico-examples:
 2. cd build
 3. conda activate accelerometer
 4. cmake -G "MinGW Makefiles" ..
-5. cd RP2040-LCD-1.28
+5. cd accelerometer
 6. make
 
 These steps will produce a main.uf2 in build > RP2040-LCD-1.28
