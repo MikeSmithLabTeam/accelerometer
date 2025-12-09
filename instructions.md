@@ -37,5 +37,8 @@ Drag and drop the uf2 file onto the device and it should automatically reboot an
 
 The CMakeLists.txt has a list of subdirectories to add. Inside the RP2040-LCD-1.28 folder is a ReadmeEN which has some instructions. You can tweak things like the accelerometer range, access gyros and magnetometers. I'd look at the original example main.c code in RP2040-LCD-1.28. I'd then cut together what you want with the main.c code in RP2040-LCD-1.28.
 
+## USB communication ERROR
+If the device is not appearing as a COM port in the device manager, check for this warning after running cmake -G "MinGW Makefiles" .. 
+<img width="780" height="86" alt="image" src="https://github.com/user-attachments/assets/be691cf8-19fc-4a53-9bd7-a6c8c481bc94" />
 
 
