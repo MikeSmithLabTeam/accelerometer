@@ -41,4 +41,6 @@ The CMakeLists.txt has a list of subdirectories to add. Inside the RP2040-LCD-1.
 If the device is not appearing as a COM port in the device manager, check for this warning after running cmake -G "MinGW Makefiles" .. 
 <img width="780" height="86" alt="image" src="https://github.com/user-attachments/assets/be691cf8-19fc-4a53-9bd7-a6c8c481bc94" />
 
+follow the hint, also we had to update permissions by following further hints when we ran 'git submodule update --init'
+
 
