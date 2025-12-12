@@ -36,6 +36,8 @@
 #include "Debug.h"
 #include <stdlib.h> // malloc() free()
 
-int LCD_1in28_test(void);
+//int LCD_1in28_test(void);
+
+int accelerometerxyz(void);
 
 #endif

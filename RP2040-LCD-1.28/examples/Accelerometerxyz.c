@@ -39,6 +39,8 @@
 
 int accelerometerxyz(void)
 {
+	//stdio_init_all();
+
     if (DEV_Module_Init() != 0)
     {
         return -1;
@@ -49,18 +51,37 @@ int accelerometerxyz(void)
 	Then set one_g to the value shown on z when it is lying flat on its back.	
 	*/
 
-	//Use these calibration values for accelerometer 1
+	//Use these calibration values for accelerometer 1: pre dec 25
 	/*
 	float one_g = 9.658;//This is the number V for 1g using 8g range and 8000Hz. Checked using z axis.
 	float offset_x = 0.5*(9.990-9.634);
 	float offset_y = 0.5*(10.796-9.011);
 	float offset_z = 0.5*(10.013 - 9.303);
 	*/
-	//Use these calibration values for accelerometer 2
-	float one_g = 9.658;//This is the number V for 1g using 8g range and 8000Hz. Checked using z axis.
-	float offset_x = 0.5*(9.990-9.634) + 0.13*one_g;
-	float offset_y = 0.5*(10.796-9.011) + 0.10*one_g;
-	float offset_z = 0.5*(10.013 - 9.303);
+	//Use these calibration values for accelerometer J: dec 25
+	/*
+	char acc_name[] = "JOE";
+	float measured_scale = 0.85; 
+	float one_gx = 1.0;
+	float one_gy = 1.0;
+	float one_gz = 9.83;
+	float offset_x = 0.0;//0.5*(9.990-9.634) + 0.13*one_g;
+	float offset_y = 0.0;//0.5*(10.796-9.011) + 0.10*one_g;
+	float offset_z = -0.265;//0.5*(9.53 - 10.16) + one_gz;
+	*/
+
+	//Use these calibration values for accelerometer O: dec 25
+	
+	char acc_name[] = "Oliver";
+	float measured_scale = 0.85; 
+	float one_gx = 1.0;
+	float one_gy = 1.0;
+	float one_gz = 9.58;
+	float offset_x = 0.0;//0.5*(9.990-9.634) + 0.13*one_g;
+	float offset_y = 0.0;//0.5*(10.796-9.011) + 0.10*one_g;
+	float offset_z = -0.05;
+	
+
 
 
 
@@ -105,6 +126,10 @@ int accelerometerxyz(void)
 	float av_acc_x;
 	float av_acc_y;
 	float av_acc_z;
+
+	
+
+	//Collect x,y,z accelerations into arrays
 	
     printf("Loaded entering main loop...\r\n");
     while (true)
@@ -122,6 +147,8 @@ int accelerometerxyz(void)
 		av_acc_y = 0;
 		av_acc_z = 0;
 		
+
+		//Calculate the average acceleration
 		for (int i=0;i<numpts;i++){
 			av_acc_x += acc_x[i];
 			av_acc_y += acc_y[i];
@@ -131,6 +158,8 @@ int accelerometerxyz(void)
 		av_acc_y = av_acc_y/numpts;
 		av_acc_z = av_acc_z/numpts;
 		
+
+		//Calculate the peak acceleration. We assume a sin wave, calculate the rms acceleration and then multiply by sqrt(2) to get the peak.
 		pk_acc_x=0;
 		pk_acc_y=0;
 		pk_acc_z=0;
@@ -141,16 +170,19 @@ int accelerometerxyz(void)
 			pk_acc_z += (acc_z[i]-av_acc_z)*(acc_z[i]-av_acc_z);
 		}
 		
-		pk_acc_x = sqrt(2*pk_acc_x/numpts)/one_g;
-		pk_acc_y = sqrt(2*pk_acc_y/numpts)/one_g;
-		pk_acc_z = sqrt(2*pk_acc_z/numpts)/one_g;
+		pk_acc_x = sqrt(2*pk_acc_x/numpts)/one_gx;
+		pk_acc_y = sqrt(2*pk_acc_y/numpts)/one_gy;
+		pk_acc_z = sqrt(2*pk_acc_z/numpts)/one_gz;
+
+		pk_acc_z *= measured_scale;
 		
-		av_acc_x = av_acc_x/one_g;
-		av_acc_y = av_acc_y/one_g;
-		av_acc_z = av_acc_z/one_g;
+		av_acc_x = av_acc_x/one_gx;
+		av_acc_y = av_acc_y/one_gy;
+		av_acc_z = av_acc_z/one_gz;
         
 		//printf("drawing\n");
 		Paint_Clear(WHITE);
+		Paint_DrawString_EN(75, 17, acc_name, &Font24, BLUE, WHITE);
 		Paint_DrawString_EN(40, 44, "PK_X = ", &Font24, RED, WHITE);
         Paint_DrawString_EN(40, 71, "PK_Y = ", &Font24, GREEN, WHITE);
         Paint_DrawString_EN(40, 98, "PK_Z = ", &Font24, BLUE, WHITE);
@@ -169,6 +201,8 @@ int accelerometerxyz(void)
 		
 		//Send aggregated data
 		printf("acc average x,y,z pk x,y,z (g) = %4.3f, %4.3f, %4.3f, %4.3f, %4.3f, %4.3f\r\n", av_acc_x, av_acc_y, av_acc_z, pk_acc_x, pk_acc_y, pk_acc_z);
+
+		sleep_ms(100);
 		
 		//Send raw data.
 		//send_data_request = getchar();
