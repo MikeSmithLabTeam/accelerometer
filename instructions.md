@@ -39,6 +39,11 @@ The CMakeLists.txt has a list of subdirectories to add. Inside the RP2040-LCD-1.
 
 ## Serial connection issue
 
-If Use com port is not appearing after uploading code to accelerometer, look for tinyusb in the make output and follow the hint to install the drivers.
+If the device is not appearing as a COM port in the device manager, check for this warning after running cmake -G "MinGW Makefiles" ..
+<img width="789" height="94" alt="image" src="https://github.com/user-attachments/assets/5f9f4cd8-9976-4fe9-ae65-bc29ceb3b52d" />
+
+and follow the hint to install the drivers.
+
+We also had to update permissions by following further hints when we ran 'git submodule update --init'
 
 
