@@ -37,5 +37,8 @@ Drag and drop the uf2 file onto the device and it should automatically reboot an
 
 The CMakeLists.txt has a list of subdirectories to add. Inside the RP2040-LCD-1.28 folder is a ReadmeEN which has some instructions. You can tweak things like the accelerometer range, access gyros and magnetometers. I'd look at the original example main.c code in RP2040-LCD-1.28. I'd then cut together what you want with the main.c code in RP2040-LCD-1.28.
 
+## Serial connection issue
+
+If Use com port is not appearing after uploading code to accelerometer, look for tinyusb in the make output and follow the hint to install the drivers.
 
 
