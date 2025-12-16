@@ -71,7 +71,7 @@ int accelerometerxyz(void)
 	*/
 
 	//Use these calibration values for accelerometer O: dec 25
-	
+	/*
 	char acc_name[] = "Oliver";
 	float measured_scale = 0.85; 
 	float one_gx = 1.0;
@@ -80,7 +80,17 @@ int accelerometerxyz(void)
 	float offset_x = 0.0;//0.5*(9.990-9.634) + 0.13*one_g;
 	float offset_y = 0.0;//0.5*(10.796-9.011) + 0.10*one_g;
 	float offset_z = -0.05;
-	
+	*/
+
+	//Use these calibrations of battery accelerometer: Dec 2025
+	char acc_name[] = "BAT";
+	float measured_scale = 0.85; 
+	float one_gx = 1.0;
+	float one_gy = 1.0;
+	float one_gz = 9.83;
+	float offset_x = 0.0;//0.5*(9.990-9.634) + 0.13*one_g;
+	float offset_y = 0.0;//0.5*(10.796-9.011) + 0.10*one_g;
+	float offset_z = -0.09*one_gz;
 
 
 
